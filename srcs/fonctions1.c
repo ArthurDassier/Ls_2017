@@ -7,14 +7,14 @@
 
 #include "my.h"
 
-void print_my(char **str, char *argv, int nb)
+void print_my(char **str, char *argv[], int nb)
 {
 	for (int u = 0; u != nb; u++)
 		my_printf("%s\n", str[u]);
 	my_printf("my_ls\n");
 }
 
-int base_ls(char *argv)
+int base_ls(int argc, char **argv)
 {
 	DIR*	rep = NULL;
 	struct stat	sb;
@@ -22,7 +22,10 @@ int base_ls(char *argv)
 	char	*str[5];
 	int	i = 0;
 
-	rep = opendir(".");
+	if (argc != 1)
+		rep = opendir(argv[1]);
+	else
+		rep = opendir(".");
 	read_fold = readdir(rep);
 	while ((read_fold = readdir(rep)) != NULL) {
 		if (read_fold->d_name[0] != '.') {
@@ -30,7 +33,6 @@ int base_ls(char *argv)
 			i++;
 		}
 	}
-	str[i + 1] = argv;
 	print_my(str, argv, i);
 	return(0);
 }

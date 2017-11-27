@@ -8,7 +8,7 @@
 #ifndef LS_H
 #define LS_H
 
-int base_ls(char *argv);
-void print_my(char **str, char *argv, int nb);
+int base_ls(int argc, char **argv);
+void print_my(char **str, char *argv[], int nb);
 
 #endif
