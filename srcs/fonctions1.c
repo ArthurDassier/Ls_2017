@@ -9,16 +9,16 @@
 
 void print_my(char **str, char *argv[], int nb)
 {
-	for (int u = 0; u != nb; u++)
+	for (int u = 0; u < nb; u++)
 		my_printf("%s\n", str[u]);
-	//my_printf("my_ls\n");
+	my_printf("my_ls\n");
 }
 
 int base_ls(int argc, char **argv)
 {
 	DIR*	rep = NULL;
 	struct stat	sb;
-	struct dirent*	read_fold = NULL;
+	struct dirent*	read_fold;
 	char	*str[0];
 	int	i = 0;
 
