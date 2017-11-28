@@ -33,7 +33,7 @@ int argc, char **argv)
 	int	i = 0;
 	int	p;
 
-	for (int j = 1; j < argc; j++) {
+	for (int j = 1; j < argc ; j++) {
 		if (argv[i][j] == '-') {
 			p = argv_parser(argv[i][j]);
 			PointeursurFonction[p](argc, argv);

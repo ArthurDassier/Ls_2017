@@ -11,7 +11,6 @@ void print_my(char **str, char *argv[], int nb)
 {
 	for (int u = 0; u < nb; u++)
 		my_printf("%s\n", str[u]);
-	my_printf("my_ls\n");
 }
 
 int base_ls(int argc, char **argv)
@@ -26,7 +25,6 @@ int base_ls(int argc, char **argv)
 		rep = opendir(argv[1]);
 	else
 		rep = opendir(".");
-	read_fold = readdir(rep);
 	while ((read_fold = readdir(rep)) != NULL) {
 		if (read_fold->d_name[0] != '.') {
 			str[i] = read_fold->d_name;
@@ -39,5 +37,5 @@ int base_ls(int argc, char **argv)
 
 int case_l(int argc, char **argv)
 {
-
+	return(0);
 }
