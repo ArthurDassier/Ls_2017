@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2017
-** ANTI-WARNING
+** my.h
 ** File description:
-** mes prototypes
+** mesprototypes
 */
 
 #ifndef MYLIB_H

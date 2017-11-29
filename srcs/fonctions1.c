@@ -7,13 +7,13 @@
 
 #include "my.h"
 
-void print_my(char **str, char *argv[], int nb)
+void print_my(char **str, char *argv, int nb)
 {
 	for (int u = 0; u < nb; u++)
 		my_printf("%s\n", str[u]);
 }
 
-int base_ls(int argc, char **argv)
+int base_ls(int argc, char *argv)
 {
 	DIR*	rep = NULL;
 	struct stat	sb;
@@ -22,7 +22,7 @@ int base_ls(int argc, char **argv)
 	int	i = 0;
 
 	if (argc != 1)
-		rep = opendir(argv[1]);
+		rep = opendir(argv);
 	else
 		rep = opendir(".");
 	while ((read_fold = readdir(rep)) != NULL) {
@@ -35,7 +35,12 @@ int base_ls(int argc, char **argv)
 	return(0);
 }
 
-int case_l(int argc, char **argv)
+int mult_path(int (*PointeursurFonction[2])(int argc, char *argv),
+int argc, char *argv, int j)
 {
+	my_printf("%s:\n", argv);
+	PointeursurFonction[0](argc, argv);
+	if (j != argc - 1)
+		my_putchar('\n');
 	return(0);
 }

@@ -22,6 +22,7 @@ all:	$(NAME)
 $(NAME):	$(OBJ)
 		$(AR) ../$(NAME) $(OBJ)
 		rm *.o
+		rm my_printf/*.o
 clean:
 	rm -f $(OBJ)
 
