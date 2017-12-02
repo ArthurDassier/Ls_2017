@@ -19,8 +19,8 @@ void pr_right(char *str, struct stat sb, struct timespec st_ctim,
 
 	print_hyp_l(sb);
 	my_printf("%d ", sb.st_nlink);
-	my_printf("%s ", gname->gr_name);
 	my_printf("%s ", j->pw_name);
+	my_printf("%s ", gname->gr_name);
 	my_printf("%d ", size);
 	for(int i = 4; i != 16; i++)
 		my_putchar(date[i]);

@@ -37,6 +37,7 @@ int arguments(int (*tabptr[2])(int argc, char **argv, int x),
 		if (argv[j][i] == '-') {
 			p = argv_parser(argv[j][i + 1]);
 			tabptr[p](argc, argv, j);
+			break;
 		} else {
 			mult_path(tabptr, argc, argv, j);
 		}
