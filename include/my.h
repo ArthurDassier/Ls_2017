@@ -8,13 +8,16 @@
 #ifndef MYLIB_H
 #define MYLIB_H
 
-#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdarg.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/sysmacros.h>
+#include <pwd.h>
+#include <grp.h>
+#include <errno.h>
+#include <stdarg.h>
+#include <time.h>
 #include <unistd.h>
 #include <dirent.h>
 #include "printf.h"

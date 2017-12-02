@@ -10,6 +10,7 @@
 
 #include "my.h"
 typedef struct Chainlist Chainlist;
+typedef struct Dlcr Dlcr;
 
 struct Chainlist
 {
