@@ -59,10 +59,7 @@ int hyp_l(int argc, char **argv, int x)
 		rep = opendir(argv[x + 1]);
 	while ((rd_fld = readdir(rep)) != NULL) {
 		if (rd_fld->d_name[0] != '.') {
-			if (argc > 2)
-				str[i] = my_strcat(argv[x + 1], rd_fld->d_name);
-			else
-				str[i] = rd_fld->d_name;
+			str[i] = thecat( rd_fld, argc, argv, x);
 			i++;
 		}
 	}

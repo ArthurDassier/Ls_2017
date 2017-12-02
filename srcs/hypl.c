@@ -60,3 +60,14 @@ int base_d(int argc, char **argv, int x)
 	else
 		my_printf(".\n");
 }
+
+char *thecat(struct dirent* rd_fld, int argc, char **argv, int x)
+{
+	char	*str;
+
+	if (argc > 2)
+		str = my_strcat(argv[x + 1], rd_fld->d_name);
+	else
+		str = rd_fld->d_name;
+	return(str);
+}
