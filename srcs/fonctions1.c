@@ -35,7 +35,7 @@ int base_ls(int argc, char **argv, int x)
 	return(0);
 }
 
-int mult_path(int (*tabptr[2])(int argc, char **argv, int x),
+int mult_path(int (*tabptr[4])(int argc, char **argv, int x),
 int argc, char **argv, int j)
 {
 	if (argc != 2)
@@ -51,19 +51,24 @@ int hyp_l(int argc, char **argv, int x)
 	DIR*	rep = opendir(".");
 	struct stat	sb;
 	struct timespec	st_ctim;
-	struct dirent*	read_fold;
+	struct dirent*	rd_fld;
 	char	*str[200];
 	int	i = 0;
 
-	while ((read_fold = readdir(rep)) != NULL) {
-		if (read_fold->d_name[0] != '.') {
-		str[i] = read_fold->d_name;
-		i++;
+	if (argc > 2)
+		rep = opendir(argv[x + 1]);
+	while ((rd_fld = readdir(rep)) != NULL) {
+		if (rd_fld->d_name[0] != '.') {
+			if (argc > 2)
+				str[i] = my_strcat(argv[x + 1], rd_fld->d_name);
+			else
+				str[i] = rd_fld->d_name;
+			i++;
 		}
 	}
 	for(int e = 0; e != i; e++) {
 		stat(str[e], &sb);
-		pr_right(str[e], sb, st_ctim, read_fold);
+		pr_right(str[e], sb, st_ctim, rd_fld);
 	}
 	return(0);
 }

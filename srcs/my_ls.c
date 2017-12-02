@@ -10,7 +10,7 @@
 static int argv_parser(char flag)
 {
 	int	i = 0;
-	char	*str = "$lrR";
+	char	*str = "$lrdR";
 
 	while (str[i] != flag && str[i] != '\0') {
 		i++;
@@ -21,13 +21,15 @@ static int argv_parser(char flag)
 		return (i);
 }
 
-static void my_init(int (*tabptr[2])(int argc, char **argv, int x))
+static void my_init(int (*tabptr[4])(int argc, char **argv, int x))
 {
 	tabptr[0] = &base_ls;
 	tabptr[1] = &hyp_l;
+	tabptr[2] = &base_r;
+	tabptr[3] = &base_d;
 }
 
-int arguments(int (*tabptr[2])(int argc, char **argv, int x),
+int arguments(int (*tabptr[4])(int argc, char **argv, int x),
 	int argc, char **argv)
 {
 	int	i = 0;
@@ -47,7 +49,7 @@ int arguments(int (*tabptr[2])(int argc, char **argv, int x),
 
 int main(int argc, char *argv[])
 {
-	int	(*tabptr[2])(int argc, char **argv, int x);
+	int	(*tabptr[4])(int argc, char **argv, int x);
 
 	my_init(tabptr);
 	if (argc > 1)

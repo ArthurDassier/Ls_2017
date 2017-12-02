@@ -27,3 +27,36 @@ void pr_right(char *str, struct stat sb, struct timespec st_ctim,
 	my_putchar(' ');
 	print_my(&str, str, 1);
 }
+
+void print_r(char **str, char *argv, int nb)
+{
+	for (int u = 0; u <= nb; nb--)
+		my_printf("%s\n", str[nb]);
+}
+
+int base_r(int argc, char **argv, int x)
+{
+	DIR*	rep = opendir(".");
+	struct stat	sb;
+	struct dirent*	read_fold;
+	char	*str[0];
+	int	i = 0;
+
+	while ((read_fold = readdir(rep)) != NULL) {
+		if (read_fold->d_name[0] != '.') {
+			str[i] = read_fold->d_name;
+			i++;
+		}
+	}
+	print_r(str, argv[x], i - 1);
+	return(0);
+}
+
+int base_d(int argc, char **argv, int x)
+{
+	if (argc != 2)
+		for (int i = 2; i != argc; i++)
+			my_printf("%s\n", argv[i]);
+	else
+		my_printf(".\n");
+}

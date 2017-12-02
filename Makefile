@@ -8,6 +8,7 @@
 SRC	=	srcs/my_ls.c		\
 		srcs/fonctions1.c	\
 		srcs/hypl.c		\
+		srcs/hypr.c		\
 
 OBJ	=	$(SRC:.c = .o)
 
