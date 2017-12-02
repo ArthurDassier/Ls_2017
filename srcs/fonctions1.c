@@ -48,17 +48,12 @@ int argc, char **argv, int j)
 
 int hyp_l(int argc, char **argv, int x)
 {
-	DIR*	rep = opendir(".");;
+	DIR*	rep = opendir(".");
 	struct stat	sb;
 	struct timespec	st_ctim;
-	uid_t	uid = getuid();
-	struct passwd	*j = getpwuid(uid);
 	struct dirent*	read_fold;
-	int	size;
-	char *str[200];
+	char	*str[200];
 	int	i = 0;
-	char	*pd;
-	struct group	*gname = getpwuid(uid);
 
 	while ((read_fold = readdir(rep)) != NULL) {
 		if (read_fold->d_name[0] != '.') {
@@ -68,16 +63,7 @@ int hyp_l(int argc, char **argv, int x)
 	}
 	for(int e = 0; e != i; e++) {
 		stat(str[e], &sb);
-		size = sb.st_size;
-		print_hyp_l(sb);
-		my_printf("%d ", sb.st_nlink);
-		my_printf("%s ", gname->gr_name);
-		my_printf("%s ", j->pw_name);
-		my_printf("%d ", size);
-		pd = ctime(&sb.st_ctime);
-		pd[my_strlen(pd) - 1] = '\0';
-		my_printf("%s ", pd);
-		print_my(&str[e], argv[x], 1);
+		pr_right(str[e], sb, st_ctim, read_fold);
 	}
 	return(0);
 }

@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2017
-** TASK01
+** my_strcpy.c
 ** File description:
 ** le copy
 */

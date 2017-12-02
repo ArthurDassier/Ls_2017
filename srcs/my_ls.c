@@ -28,7 +28,7 @@ static void my_init(int (*tabptr[2])(int argc, char **argv, int x))
 }
 
 int arguments(int (*tabptr[2])(int argc, char **argv, int x),
-int argc, char **argv)
+	int argc, char **argv)
 {
 	int	i = 0;
 	int	p;
