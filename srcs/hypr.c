@@ -9,7 +9,28 @@
 
 int base_rr(int argc, char **argv, int x)
 {
+	DIR*	rep = NULL;
+	struct stat	sb;
+	struct dirent*	read_fold;
+	char	*str[200];
+	int	i = 0;
 
+	if (argc != 2)
+		rep = opendir(argv[x]);
+	else
+		rep = opendir(".");
+	while ((read_fold = readdir(rep)) != NULL) {
+		stat(read_fold->d_name, &sb);
+		if (read_fold->d_name[0] != '.' && S_ISDIR(sb.st_mode)) {
+			my_printf("./%s:\n", read_fold->d_name);
+			str[i] = read_fold->d_name;
+			print_rr(2, str, i);
+			my_putchar('\n');
+			i++;
+		}
+	}
+	my_printf(".:\n");
+	base_ls(1, argv, 1);
 	return(0);
 }
 
@@ -30,4 +51,22 @@ char type(struct stat sb)
 	if(S_ISBLK(sb.st_mode))
 		type = 'b';
 	return(type);
+}
+
+void print_rr(int argc, char **argv, int x)
+{
+	DIR*	rep = NULL;
+ 	struct stat	sb;
+ 	struct dirent*	read_fold;
+ 	char	*str[200];
+ 	int	i = 0;
+
+ 	rep = opendir(argv[x]);
+ 	while ((read_fold = readdir(rep)) != NULL) {
+ 		if (read_fold->d_name[0] != '.') {
+ 			str[i] = read_fold->d_name;
+ 			i++;
+ 		}
+ 	}
+ 	print_my(str, argv[x], i);
 }

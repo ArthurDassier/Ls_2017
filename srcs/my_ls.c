@@ -16,12 +16,12 @@ static int argv_parser(char flag)
 		i++;
 	}
 	if (str[i] == '\0')
-		return (0);
+		return (84);
 	else
 		return (i);
 }
 
-static void my_init(int (*tabptr[4])(int argc, char **argv, int x))
+static void my_init(int (*tabptr[5])(int argc, char **argv, int x))
 {
 	tabptr[0] = &base_ls;
 	tabptr[1] = &hyp_l;
@@ -30,7 +30,7 @@ static void my_init(int (*tabptr[4])(int argc, char **argv, int x))
 	tabptr[4] = &base_rr;
 }
 
-int arguments(int (*tabptr[4])(int argc, char **argv, int x),
+int arguments(int (*tabptr[5])(int argc, char **argv, int x),
 	int argc, char **argv)
 {
 	int	i = 0;
@@ -39,6 +39,8 @@ int arguments(int (*tabptr[4])(int argc, char **argv, int x),
 	for (int j = 1; j < argc ; j++) {
 		if (argv[j][i] == '-') {
 			p = argv_parser(argv[j][i + 1]);
+			if (p == 84)
+				return(84);
 			tabptr[p](argc, argv, j);
 			break;
 		} else {
@@ -50,7 +52,7 @@ int arguments(int (*tabptr[4])(int argc, char **argv, int x),
 
 int main(int argc, char *argv[])
 {
-	int	(*tabptr[4])(int argc, char **argv, int x);
+	int	(*tabptr[5])(int argc, char **argv, int x);
 
 	my_init(tabptr);
 	if (argc > 1)

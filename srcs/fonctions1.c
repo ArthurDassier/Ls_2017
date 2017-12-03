@@ -35,7 +35,7 @@ int base_ls(int argc, char **argv, int x)
 	return(0);
 }
 
-int mult_path(int (*tabptr[4])(int argc, char **argv, int x),
+int mult_path(int (*tabptr[5])(int argc, char **argv, int x),
 int argc, char **argv, int j)
 {
 	if (argc != 2)
