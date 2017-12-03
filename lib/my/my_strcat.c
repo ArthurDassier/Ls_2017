@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2017
 ** my_strcat
 ** File description:
-**
+** Salutccool
 */
 
 #include <stdlib.h>
