@@ -27,6 +27,7 @@ static void my_init(int (*tabptr[4])(int argc, char **argv, int x))
 	tabptr[1] = &hyp_l;
 	tabptr[2] = &base_r;
 	tabptr[3] = &base_d;
+	tabptr[4] = &base_rr;
 }
 
 int arguments(int (*tabptr[4])(int argc, char **argv, int x),

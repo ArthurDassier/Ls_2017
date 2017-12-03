@@ -52,14 +52,14 @@ int hyp_l(int argc, char **argv, int x)
 	struct stat	sb;
 	struct timespec	st_ctim;
 	struct dirent*	rd_fld;
-	char	*str[200];
+	char	*str[2000];
 	int	i = 0;
 
 	if (argc > 2)
 		rep = opendir(argv[x + 1]);
 	while ((rd_fld = readdir(rep)) != NULL) {
 		if (rd_fld->d_name[0] != '.') {
-			str[i] = thecat( rd_fld, argc, argv, x);
+			str[i] = thecat(rd_fld, argc, argv, x);
 			i++;
 		}
 	}
@@ -72,7 +72,7 @@ int hyp_l(int argc, char **argv, int x)
 
 void print_hyp_l(struct stat fileStat)
 {
-	my_putchar(S_ISDIR(fileStat.st_mode) ? 'd' : '-');
+	my_putchar(type(fileStat));
 	my_putchar((fileStat.st_mode & S_IRUSR) ? 'r' : '-');
 	my_putchar((fileStat.st_mode & S_IWUSR) ? 'w' : '-');
 	my_putchar((fileStat.st_mode & S_IXUSR) ? 'x' : '-');

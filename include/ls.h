@@ -22,5 +22,6 @@ int base_r(int argc, char **argv, int x);
 int base_rr(int argc, char **argv, int x);
 int base_d(int argc, char **argv, int x);
 char *thecat(struct dirent* rd_fld, int argc, char **argv, int x);
+char type(struct stat sb);
 
 #endif

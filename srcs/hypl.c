@@ -14,7 +14,7 @@ void pr_right(char *str, struct stat sb, struct timespec st_ctim,
 	struct passwd	*j = getpwuid(uid);
 	int	size = sb.st_size;
 	char	*date = ctime(&sb.st_ctime);
-	struct group	*gname = getpwuid(uid);
+	struct group	*gname = getgrgid(uid);
 	stat(str, &sb);
 
 	print_hyp_l(sb);
